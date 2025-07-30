@@ -17,7 +17,7 @@ collections:
     create: true
     preview_path: "docs/{{slug}}"
     nested:
-      depth: 3 # how many folder levels deep are allowed
+      depth: 10 # how many folder levels deep are allowed
       summary: "{{title}}" # optional: controls display in CMS UI
     slug: "{{slug}}"
     fields:
