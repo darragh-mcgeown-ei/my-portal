@@ -1,8 +1,8 @@
 {
   "id": "july-outage-1892",
-  "content": "🚨 NDC API experiencing degraded performance.",
+  "content": "🚨 NDC API experiencing degraded performance.\nasdadsads\nasdadasd",
   "backgroundColor": "#fff3cd",
   "textColor": "#212529",
   "isCloseable": false,
-  "enabled": false
+  "enabled": true
 }
