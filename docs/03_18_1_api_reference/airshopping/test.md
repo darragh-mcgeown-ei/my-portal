@@ -1,4 +1,5 @@
 ---
+title: Onboarding Steps
 sidebar_position: 1
 ---
 
