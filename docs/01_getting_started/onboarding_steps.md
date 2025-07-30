@@ -1,5 +1,5 @@
 ---
-title: Onboarding Steps234234
+title: OB
 sidebar_position: 2
 ---
 

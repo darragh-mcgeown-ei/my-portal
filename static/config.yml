@@ -9,29 +9,29 @@ media_folder: "static/img" # Media files will be stored in the repo under static
 public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
 
 collections:
-  - name: docs
-    label: "Documentation"
-    folder: docs
+  - name: getting_started
+    label: "Getting Started"
+    label_singular: "Document"
+    folder: docs/01_getting_started
     extension: md
     format: frontmatter
     create: true
-    preview_path: "docs/{{slug}}"
-    nested:
-      depth: 10 # how many folder levels deep are allowed
-#      summary: "{{title}}" # optional: controls display in CMS UI
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", required: false }
       - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
-  - name: getting_started
-    label: "Getting Started"
-    folder: docs/01_getting_started
+  - name: 18_1_api_reference
+    label: "18.1 API Reference"
+    label_singular: "Document"
+    folder: docs/03_18_1_api_reference
     extension: md
-      format: frontmatter
-      create: true
+    format: frontmatter
+    create: true
+    nested:
+      depth: 2
     slug: "{{slug}}"
-      fields:
-        - { label: "Title", name: "title", widget: "string", required: false }
-        - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
-        - { label: "Body", name: "body", widget: "markdown" }
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
