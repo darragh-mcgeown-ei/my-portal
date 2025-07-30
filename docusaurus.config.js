@@ -43,10 +43,8 @@ const config = {
     themes: ['@docusaurus/theme-mermaid'],
 
     // Set the production url of your site here
-    url: 'https://your-docusaurus-site.example.com',
-    // Set the /<baseUrl>/ pathname under which your site is served
-    // For GitHub pages deployment, it is often '/<projectName>/'
-    baseUrl: '/',
+    url: 'https://darragh-mcgeown-ei.github.io',
+    baseUrl: '/my-portal/',
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
