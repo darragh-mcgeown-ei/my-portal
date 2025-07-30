@@ -1,6 +1,6 @@
 {
   "id": "july-outage-1892",
-  "content": "🚨 NDC API experiencing degraded performance. See [Notifications](/docs/notifications).",
+  "content": "🚨 NDC API experiencing degraded performance.",
   "backgroundColor": "#fff3cd",
   "textColor": "#212529",
   "isCloseable": false
