@@ -80,3 +80,20 @@ mindmap
       Pen and paper
       Mermaid
 ```
+
+```mermaid
+radar-beta
+  axis m["Math"], s["Science"], e["English"]
+  axis h["History"], g["Geography"], a["Art"]
+  curve a["Alice"]{85, 90, 80, 70, 75, 90}
+  curve b["Bob"]{70, 75, 85, 80, 90, 85}
+
+  max 100
+  min 0
+```
+
+## Inline Code Highlight
+The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+
+## Images
+![](/img/screenshot-2025-07-16-at-10.06.53.png)

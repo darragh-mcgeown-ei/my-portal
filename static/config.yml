@@ -33,3 +33,15 @@ collections:
       - { label: "Title", name: "title", widget: "string", required: false }
       - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: docs
+    label: "Uncategorised Documents"
+    label_singular: "Other Documents"
+    folder: docs
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
