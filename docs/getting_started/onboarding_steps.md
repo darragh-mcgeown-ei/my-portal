@@ -1,5 +1,5 @@
 ---
-title: OB
+title: Onboarding Procedure
 sidebar_position: 2
 ---
 
