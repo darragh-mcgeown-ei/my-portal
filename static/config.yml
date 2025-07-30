@@ -25,7 +25,7 @@ collections:
     label: "18.1 API Reference"
     label_singular: "API Document"
     folder: docs/18_1_api_reference
-    extension: md
+    extension: mdx
     format: frontmatter
     create: true
     slug: "{{slug}}"
@@ -36,7 +36,7 @@ collections:
   - name: workflows
     label: "Workflows"
     label_singular: "Workflow Document"
-    folder: docs/18_1_api_reference
+    folder: docs/workflows
     extension: mdx
     format: frontmatter
     create: true
