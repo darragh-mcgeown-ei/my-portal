@@ -23,9 +23,21 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
   - name: 18_1_api_reference
     label: "18.1 API Reference"
-    label_singular: "Document"
+    label_singular: "API Document"
     folder: docs/18_1_api_reference
     extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: workflows
+    label: "Workflows"
+    label_singular: "Workflow Document"
+    folder: docs/18_1_api_reference
+    extension: mdx
     format: frontmatter
     create: true
     slug: "{{slug}}"
