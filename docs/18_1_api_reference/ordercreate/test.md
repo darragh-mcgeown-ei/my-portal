@@ -1,5 +1,5 @@
 ---
-title: test 1
+title: test 1§
 sidebar_position: 1
 ---
 
