@@ -1,36 +1,41 @@
 ---
-sidebar_position: 1
 title: Introduction
---- 
+sidebar_position: 1
+---
 ## Heading 2
+
 ### Heading 3
+
 #### Heading 4
 
 ## Information Panels
+
 :::note
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
 :::
 :::tip
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
 :::
 :::info
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
 :::
 :::warning
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
 :::
 :::danger
-Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
 :::
 
 ## Code Blocks
-```jsx title="/src/components/HelloCodeTitle.js"
+
+```jsx
 function HelloCodeTitle(props) {
   return <h1>Hello, {props.name}</h1>;
 }
 ```
 
 ## Mermaid Diagrams
+
 ```mermaid
 graph TD;
     A-->B;
@@ -55,6 +60,7 @@ Campaign D: [0.78, 0.34]
 Campaign E: [0.40, 0.34]
 Campaign F: [0.35, 0.78]
 ```
+
 ```mermaid
 mindmap
   root((mindmap))
@@ -74,4 +80,3 @@ mindmap
       Pen and paper
       Mermaid
 ```
-
