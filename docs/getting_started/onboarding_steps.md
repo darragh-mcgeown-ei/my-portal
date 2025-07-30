@@ -3,4 +3,5 @@ title: Onboarding Procedure
 sidebar_position: 2
 ---
 
-# Onboarding Steps234234
+Time tolerance measured in hours before the requested departure time.
+
