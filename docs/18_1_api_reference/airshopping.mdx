@@ -120,9 +120,21 @@ There are many variations of passages of Lorem Ipsum available, but the majority
       <td>`<FlightRequest>`</td>
       <td>
         This is the flight request.
-        <details>
+        <details className="ei-xml-snippet">
           <summary>XML Example</summary>
-          Returns available offers based on search criteria.
+          ````xml
+          <FlightRequest>
+               <OriginDestRequest>
+                   <DestArrivalRequest>
+                       <IATA_LocationCode>ORD</IATA_LocationCode>
+                   </DestArrivalRequest>
+                   <OriginDepRequest>
+                       <IATA_LocationCode>DUB</IATA_LocationCode>
+                       <Date>2025-07-25</Date>
+                   </OriginDepRequest>
+               </OriginDestRequest>
+           </FlightRequest>
+          ````
         </details>
       </td>
       <td>

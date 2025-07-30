@@ -57,3 +57,15 @@ collections:
       - { label: "Title", name: "title", widget: "string", required: false }
       - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: announcement
+    label: "Announcement Bar"
+    files:
+      - file: "data/announcement.json"
+        label: "Announcement Banner"
+        name: "announcement"
+        fields:
+          - { name: id, label: ID, widget: string }
+          - { name: content, label: Message, widget: markdown }
+          - { name: backgroundColor, label: Background Color, widget: color }
+          - { name: textColor, label: Text Color, widget: color }
+          - { name: isCloseable, label: Can be dismissed?, widget: boolean }

@@ -6,6 +6,14 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+const fs = require('fs');
+const path = require('path');
+
+const announcementPath = path.resolve(__dirname, 'data/announcement.json');
+const announcementBar = fs.existsSync(announcementPath)
+    ? JSON.parse(fs.readFileSync(announcementPath, 'utf8'))
+    : undefined;
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
@@ -84,6 +92,7 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
+            announcementBar: announcementBar,
             // Replace with your project's social card
             image: 'img/docusaurus-social-card.jpg',
             colorMode: {
@@ -102,14 +111,13 @@ const config = {
                         type: 'docSidebar',
                         sidebarId: 'tutorialSidebar',
                         position: 'right',
-                        label: '18.1 API Documentation',
+                        label: 'Documentation',
                     },
                     {to: '/', label: 'Support', position: 'right'},
                     {
                         to: '/register',
                         label: 'Register',
                         position: 'right',
-                        className: 'navbar-button',
                     }
                 ],
             },
