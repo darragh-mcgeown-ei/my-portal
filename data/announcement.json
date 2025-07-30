@@ -3,5 +3,6 @@
   "content": "🚨 NDC API experiencing degraded performance.",
   "backgroundColor": "#fff3cd",
   "textColor": "#212529",
-  "isCloseable": false
+  "isCloseable": false,
+  "visible": true
 }
