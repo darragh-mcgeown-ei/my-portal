@@ -1,8 +1,9 @@
 ---
+title: AirShopping RS
 sidebar_position: 1
 ---
-
 # AirShopping RS
+
 Let's discover **Docusaurus in less than 5 minutes**.
 
 ## Getting Started
@@ -13,8 +14,9 @@ Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new
 
 ### What you'll need
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+* [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
+
+  * When installing Node.js, you are recommended to check all checkboxes related to dependencies.
 
 ## Generate a new site
 
@@ -45,20 +47,23 @@ The `npm run start` command builds your website locally and serves it through a 
 
 Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
 
-
 <details>
   <summary>Toggle me!</summary>
 
 This is the detailed content
 
-  ```js
-  console.log("Markdown features including the code block are available");
-  ```
+```js
+console.log("Markdown features including the code block are available");
+```
 
-You can use Markdown here including **bold** and _italic_ text, and [inline link](https://docusaurus.io)
+You can use Markdown here including **bold** and *italic* text, and [inline link](https://docusaurus.io)
+
   <details>
     <summary>Nested toggle! Some surprise inside...</summary>
 
-    😲😲😲😲😲
+```
+😲😲😲😲😲
+```
+
   </details>
 </details>
