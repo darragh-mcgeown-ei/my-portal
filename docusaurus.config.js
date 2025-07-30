@@ -44,11 +44,11 @@ const config = {
 
     // Set the production url of your site here
     url: 'https://darragh-mcgeown-ei.github.io',
-    baseUrl: '/my-portal/',
+    baseUrl: '/',
 
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
-    organizationName: 'darragh-mcgeown-ei', // ✅ Your GitHub username or org
+    organizationName: 'darragh-mcgeown-ei',
     projectName: 'my-portal',
 
     onBrokenLinks: 'warn',
