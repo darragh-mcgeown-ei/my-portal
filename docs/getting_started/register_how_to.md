@@ -6,8 +6,6 @@ sidebar_position: 2
 
 Let's discover **Docusaurus in less than 5 minutes**.
 
-![](/img/screenshot-2025-07-16-at-10.06.53.png)
-
 ## Getting Started
 
 Get started by **creating a new site**.
