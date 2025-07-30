@@ -12,7 +12,7 @@ collections:
   - name: getting_started
     label: "Getting Started"
     label_singular: "Document"
-    folder: docs/01_getting_started
+    folder: docs/getting_started
     extension: md
     format: frontmatter
     create: true
@@ -24,7 +24,7 @@ collections:
   - name: 18_1_api_reference
     label: "18.1 API Reference"
     label_singular: "Document"
-    folder: docs/03_18_1_api_reference
+    folder: docs/18_1_api_reference
     extension: md
     format: frontmatter
     create: true
