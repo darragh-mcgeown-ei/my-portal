@@ -28,8 +28,6 @@ collections:
     extension: md
     format: frontmatter
     create: true
-    nested:
-      depth: 2
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", required: false }
