@@ -1,0 +1,49 @@
+backend:
+  name: github
+  branch: staging
+  repo: darragh-mcgeown-ei/my-portal
+  publish_mode: editorial_workflow
+
+# These lines should *not* be indented
+media_folder: "static/img" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+#  - name: blog
+#    label: "Blog"
+#    folder: blog
+#    identifier_field: title
+#    extension: mdx
+#    format: frontmatter
+#    widget: "list"
+#    create: true
+#    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+#    fields:
+#      - { name: title, label: Title, widget: string }
+#      - { name: body, label: Body, widget: markdown }
+#      - { name: slug, label: Slug, widget: string }
+#      - label: "Tags"
+#        name: "tags"
+#        widget: "list"
+#      - label: "Authors"
+#        name: "authors"
+#        widget: "list"
+#        fields:
+#          - { name: name, label: Name, widget: string }
+#          - { name: title, label: Title, widget: string }
+#          - { name: url, label: URL, widget: string }
+#          - { name: imageUrl, label: ImageURL, widget: string }
+  - name: docs
+    label: "Docs"
+    folder: docs
+    extension: md
+    format: frontmatter
+    create: true
+    nested:
+      depth: 3 # how many folder levels deep are allowed
+      summary: "{{title}}" # optional: controls display in CMS UI
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
