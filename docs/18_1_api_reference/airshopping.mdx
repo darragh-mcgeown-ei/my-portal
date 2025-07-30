@@ -86,16 +86,6 @@ There are many variations of passages of Lorem Ipsum available, but the majority
  ````
 
  ### Request Elements
- | Element    | Details | Mandatory |
- | -------- | ------- | ------- |
- | `<PointOfSale>`  | AirShoppingRQ request information with O&D and Passenger details.    |Yes|
- | `<FlightRelatedCriteria>` | Preferred or required criteria for flight filters from the shopping response.     |No|
- | `<FlightCriteria>`    | Preferred or required criteria for flight filters from the shopping response.    |Yes|
- | `<FlightRequest>`    | This is the flight request.|Yes|
- ### Response Format
-
- ### Error Codes
-
 <table>
   <thead>
     <tr>
@@ -105,6 +95,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
     </tr>
   </thead>
   <tbody>
+
     <tr>
       <td>`<PointOfSale>`</td>
       <td>
@@ -114,14 +105,41 @@ There are many variations of passages of Lorem Ipsum available, but the majority
         Yes
       </td>
     </tr>
+
+    <tr>
+      <td>`<FlightRelatedCriteria>`</td>
+      <td>
+        Preferred or required criteria for flight filters from the shopping response
+      </td>
+      <td>
+        No
+      </td>
+    </tr>
+
+    <tr>
+      <td>`<FlightRequest>`</td>
+      <td>
+        This is the flight request.
+        <details>
+          <summary>XML Example</summary>
+          Returns available offers based on search criteria.
+        </details>
+      </td>
+      <td>
+        Yes
+      </td>
+    </tr>
+
   </tbody>
 </table>
+ ### Response Format
+
+ ### Error Codes
+
+
 
  ### Samples
 
- <details>
-          <summary>More details</summary>
-          Returns available offers based on search criteria.
-        </details>
+ 
 
  ### Schemas
