@@ -79,6 +79,10 @@ body {
   font-weight: 400;
 }
 
+.markdown td p {
+  margin: 0;
+}
+
 .markdown thead {
   background-color: transparent !important;
 }
