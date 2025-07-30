@@ -18,9 +18,20 @@ collections:
     preview_path: "docs/{{slug}}"
     nested:
       depth: 10 # how many folder levels deep are allowed
-      summary: "{{title}}" # optional: controls display in CMS UI
+#      summary: "{{title}}" # optional: controls display in CMS UI
     slug: "{{slug}}"
     fields:
       - { label: "Title", name: "title", widget: "string", required: false }
       - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
       - { label: "Body", name: "body", widget: "markdown" }
+  - name: getting_started
+    label: "Getting Started"
+    folder: docs/01_getting_started
+    extension: md
+      format: frontmatter
+      create: true
+    slug: "{{slug}}"
+      fields:
+        - { label: "Title", name: "title", widget: "string", required: false }
+        - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+        - { label: "Body", name: "body", widget: "markdown" }
