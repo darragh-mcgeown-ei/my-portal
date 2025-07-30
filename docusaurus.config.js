@@ -10,9 +10,18 @@ const fs = require('fs');
 const path = require('path');
 
 const announcementPath = path.resolve(__dirname, 'data/announcement.json');
-const announcementBar = fs.existsSync(announcementPath)
-    ? JSON.parse(fs.readFileSync(announcementPath, 'utf8'))
-    : undefined;
+let announcementBar;
+
+if (fs.existsSync(announcementPath)) {
+    const fullData = JSON.parse(fs.readFileSync(announcementPath, 'utf8'));
+
+    // Remove invalid field before passing to Docusaurus
+    const { enabled, ...cleanData } = fullData;
+
+    if (enabled && cleanData.content?.trim()) {
+        announcementBar = cleanData;
+    }
+}
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 

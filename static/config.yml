@@ -65,6 +65,7 @@ collections:
         name: "announcement"
         fields:
           - { name: id, label: ID, widget: string }
+          - { name: enabled, label: "Show announcement", widget: boolean }
           - { name: content, label: Message, widget: markdown }
           - { name: backgroundColor, label: Background Color, widget: color }
           - { name: textColor, label: Text Color, widget: color }

@@ -140,3 +140,9 @@ body {
     margin: 0;
     padding: 0;
 }
+
+.theme-announcement-bar {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
