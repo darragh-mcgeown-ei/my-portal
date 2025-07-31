@@ -32,6 +32,13 @@
 
 .navbar {
     min-height: 100px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.navbar a {
+    color: #006272;
+    font-size: 16px !important;
 }
 
 .navbar-button {
@@ -48,8 +55,8 @@
     background-color: #005bb5;
 }
 
-body {
-    font-family: Diodrum-Regular, Helvetica, Arial, sans-serif;
+body, h1, h2, h3 {
+    font-family: Diodrum-Regular, Helvetica, Arial, sans-serif !important;
 }
 
 .menu__link {
@@ -145,4 +152,40 @@ body {
     min-height: 50px;
     display: flex;
     align-items: center;
+}
+
+.hero--primary {
+    background: #006272 url(../../static/img/bg_shamrock.svg) no-repeat calc(100% + 95px) 115px;
+    min-height: 400px;
+    text-align: left !important;
+}
+
+.hero--primary p, div {
+    font-size: 18px;
+}
+
+@media (min-width: 1440px) {
+    .hero--primary > .container {
+        max-width: 1170px !important;
+    }
+}
+
+
+.hero__subtitle {
+    max-width: 784px;
+}
+
+.footer {
+    background: #f9f9f9;
+    color: #63666a;
+    font-size: 16px;
+}
+
+.footer__link-item, .footer__title {
+    color: #63666a;
+    font-size: 16px;
+}
+
+.footer__copyright {
+    font-size: 14px;
 }

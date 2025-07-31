@@ -27,8 +27,8 @@ if (fs.existsSync(announcementPath)) {
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: 'My Site',
-    tagline: 'Dinosaurs are cool',
+    title: 'Aer Lingus NDC',
+    tagline: 'Aer Lingus NDC allows you to offer your customers a more flexible, customised and personalised experience with our airline. Here’s how we’re providing this convenient new standardised distribution channel, so you can best utilise it.',
     favicon: 'img/favicon.ico',
 
     // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -100,17 +100,14 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             announcementBar: announcementBar,
-            // Replace with your project's social card
-            image: 'img/docusaurus-social-card.jpg',
             colorMode: {
                 defaultMode: 'light',
                 disableSwitch: true,
             },
             navbar: {
-                title: 'My Site',
                 logo: {
-                    alt: 'My Site Logo',
-                    src: 'img/logo.svg',
+                    alt: 'AerLingus',
+                    src: 'img/aer-lingus-logo.svg',
                 },
                 items: [
                     {to: '/', label: 'Home', position: 'right'},
@@ -129,49 +126,71 @@ const config = {
                 ],
             },
             footer: {
-                style: 'dark',
                 links: [
                     {
-                        title: 'Docs',
+                        title: 'Legal',
                         items: [
                             {
-                                label: 'Tutorial',
-                                to: '/docs/intro',
+                                label: 'Conditions of Carriage',
+                                to: '/',
+                            },
+                            {
+                                label: 'Imprint',
+                                to: '/',
+                            },
+                            {
+                                label: 'Terms of Use',
+                                to: '/',
+                            },
+                            {
+                                label: 'Privacy Statement',
+                                to: '/',
+                            },
+                            {
+                                label: 'Acceptable Usage Policy',
+                                to: '/',
                             },
                         ],
                     },
                     {
-                        title: 'Community',
+                        title: 'Connect with us',
                         items: [
-                            {
-                                label: 'Stack Overflow',
-                                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-                            },
-                            {
-                                label: 'Discord',
-                                href: 'https://discordapp.com/invite/docusaurus',
-                            },
                             {
                                 label: 'X',
-                                href: 'https://x.com/docusaurus',
+                                to: '/',
+                            },
+                            {
+                                label: 'Youtube',
+                                to: '/',
+                            },
+                            {
+                                label: 'Facebook',
+                                to: '/',
                             },
                         ],
                     },
                     {
-                        title: 'More',
+                        title: 'Help and Support',
                         items: [
                             {
-                                label: 'Blog',
-                                to: '/blog',
+                                label: 'Contact Us',
+                                to: '/',
                             },
                             {
-                                label: 'GitHub',
-                                href: 'https://github.com/facebook/docusaurus',
+                                label: 'Support',
+                                to: '/',
+                            },{
+                                label: 'Sitemap',
+                                to: '/',
+                            },
+                            {
+                                label: 'Cookie Settings',
+                                to: '/',
                             },
                         ],
                     },
                 ],
-                copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+                copyright: `Copyright © ${new Date().getFullYear()} Aer Lingus Group DAC and Aer Lingus Ltd. All rights reserved`,
             },
             prism: {
               theme: prismThemes.github,
