@@ -31,7 +31,6 @@
 }
 
 .navbar {
-    min-height: 100px;
     margin: 0 auto;
     width: 100%;
 }
@@ -53,6 +52,14 @@
 
 .navbar-button:hover {
     background-color: #005bb5;
+}
+
+.navbar__logo {
+    margin-left: 20px;
+}
+
+.navbar__items {
+    margin-right: 20px;
 }
 
 body, h1, h2, h3 {
