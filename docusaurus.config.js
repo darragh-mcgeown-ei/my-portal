@@ -132,23 +132,27 @@ const config = {
                         items: [
                             {
                                 label: 'Conditions of Carriage',
-                                to: '/',
+                                to: '/docs/legal/conditions_of_carriage',
                             },
                             {
                                 label: 'Imprint',
-                                to: '/',
+                                to: '/docs/legal/imprint',
                             },
                             {
                                 label: 'Terms of Use',
-                                to: '/',
+                                to: '/docs/legal/terms_of_use',
                             },
                             {
                                 label: 'Privacy Statement',
-                                to: '/',
+                                to: '/docs/legal/privacy_statement',
                             },
                             {
                                 label: 'Acceptable Usage Policy',
-                                to: '/',
+                                to: '/docs/legal/acceptable_usage_policy',
+                            },
+                            {
+                                label: 'Cookie Policy',
+                                to: '/docs/legal/cookie_policy',
                             },
                         ],
                     },
