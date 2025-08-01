@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_portal=self.webpackChunkmy_portal||[]).push([[8716],{8716:(e,a,c)=>{c.d(a,{createPacketServices:()=>r.$});var r=c(9811);c(8198)}}]);

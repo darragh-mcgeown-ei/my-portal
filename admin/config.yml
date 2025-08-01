@@ -1,0 +1,72 @@
+backend:
+  name: github
+  branch: staging
+  repo: darragh-mcgeown-ei/my-portal
+  publish_mode: editorial_workflow
+
+# These lines should *not* be indented
+media_folder: "static/img" # Media files will be stored in the repo under static/images/uploads
+public_folder: "/img/" # The src attribute for uploaded media will begin with /images/uploads
+
+collections:
+  - name: announcement
+    label: "Announcement Bar"
+    files:
+      - file: "data/announcement.json"
+        label: "Announcement Banner"
+        name: "announcement"
+        fields:
+          - { name: id, label: ID, widget: string }
+          - { name: enabled, label: "Show announcement", widget: boolean }
+          - { name: content, label: Message, widget: markdown }
+          - { name: backgroundColor, label: Background Color, widget: color }
+          - { name: textColor, label: Text Color, widget: color }
+          - { name: isCloseable, label: Can be dismissed?, widget: boolean }
+  - name: getting_started
+    label: "Getting Started"
+    label_singular: "Document"
+    folder: docs/getting_started
+    extension: md
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: 18_1_api_reference
+    label: "18.1 API Reference"
+    label_singular: "API Document"
+    folder: docs/18_1_api_reference
+    extension: mdx
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: workflows
+    label: "Workflows"
+    label_singular: "Workflow Document"
+    folder: docs/workflows
+    extension: mdx
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - name: legal
+    label: "Legal"
+    label_singular: "Legal Document"
+    folder: docs/legal
+    extension: mdx
+    format: frontmatter
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - { label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
