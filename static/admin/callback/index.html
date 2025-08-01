@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Decap CMS OAuth Callback</title>
-</head>
-<body>
+</html>
 <script>
     (async () => {
         const params = new URLSearchParams(window.location.search);
@@ -23,31 +18,25 @@
 
             if (!response.ok) throw new Error('Token exchange failed');
             const data = await response.json();
+            console.log("✅ Auth result:", data);
 
+            // Use the Decap CMS expected format for postMessage
+            const message = `authorization:github:success:${JSON.stringify(data)}`;
+
+            // Post message to parent and close popup
             if (window.opener) {
-                const status = 'success';
-
-                // Now that `data` is available, define the listener
-                const receiveMessage = () => {
-                    window.opener.postMessage(
-                        `authorization:github:${status}:${JSON.stringify({ token: data.token })}`,
-                        '*'
-                    );
-                    window.removeEventListener("message", receiveMessage, false);
-                    window.close(); // Close popup after sending
-                };
-
-                window.addEventListener("message", receiveMessage, false);
-
-                // Trigger the event from parent
-                window.opener.postMessage("authorizing:github", "*");
+                window.opener.postMessage(message, '*');
+                window.close();
             } else {
-                window.location.href = "/admin";
+                window.location.href = '/admin';
             }
         } catch (err) {
-            document.body.innerText = "OAuth login failed: " + err.message;
+            console.error("OAuth login failed", err);
+            const message = `authorization:github:error:${JSON.stringify({ error: err.message })}`;
+            if (window.opener) {
+                window.opener.postMessage(message, '*');
+                window.close();
+            }
         }
     })();
 </script>
-</body>
-</html>
