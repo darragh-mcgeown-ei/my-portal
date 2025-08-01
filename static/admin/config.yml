@@ -1,8 +1,11 @@
 backend:
   name: github
-  branch: staging
+  branch: amplify_migration
   repo: darragh-mcgeown-ei/my-portal
-  publish_mode: editorial_workflow
+  base_url: https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production
+  auth_endpoint: /api/auth
+
+publish_mode: editorial_workflow
 
 # These lines should *not* be indented
 media_folder: "static/img" # Media files will be stored in the repo under static/images/uploads
