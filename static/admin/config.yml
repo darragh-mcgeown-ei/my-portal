@@ -2,7 +2,7 @@ backend:
   name: github
   branch: amplify_migration
   repo: darragh-mcgeown-ei/my-portal
-  base_url: https://abc123.execute-api.region.amazonaws.com
+  base_url: https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production/
   auth_endpoint: /api/auth
 
 publish_mode: editorial_workflow
