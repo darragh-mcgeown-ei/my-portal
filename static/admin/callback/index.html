@@ -15,7 +15,7 @@
         }
 
         try {
-            const response = await fetch('/api/auth', {
+            const response = await fetch('https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production/api/auth', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ code }),
