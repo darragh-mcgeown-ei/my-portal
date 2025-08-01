@@ -1,47 +1,58 @@
-<!doctype html>
-<html>
-<head><title>GitHub Auth Callback</title></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Decap CMS OAuth Callback</title>
+</head>
 <body>
 <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
+    (async () => {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        if (!code) {
+            document.body.innerText = "Missing code in URL";
+            return;
+        }
 
+        // Listen for a message from opener before posting auth status back
+        const receiveMessage = (message) => {
+            // Assuming status is success here, you can modify as needed
+            const status = 'success';
 
+            // Post the authorization status and token back to the opener as a string message
+            window.opener.postMessage(
+                `authorization:github:${status}:${JSON.stringify({ token: data.token })}`,
+                '*'
+            );
 
-    if (!code) {
-        document.body.innerText = "Missing GitHub code.";
-    } else {
-        fetch("https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production/api/auth", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ code }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
+            // Remove the listener after posting the message
+            window.removeEventListener("message", receiveMessage, false);
+        };
+        window.addEventListener("message", receiveMessage, false);
 
-                console.log("OAuth code:", code);
-                console.log("Auth result:", data);
-                console.log("Window opener:", window.opener);
-
-                if (data.token) {
-                    window.opener.postMessage(
-                        {
-                            data: {
-                                token: data.token,
-                                user: data.user,
-                            },
-                            source: "decap-cms",
-                        },
-                        window.location.origin
-                    );
-                    // setTimeout(() => {
-                    //     window.close();
-                    // }, 10000); // Wait 10 seconds before closing (debug)
-                } else {
-                    document.body.innerText = "Error: " + JSON.stringify(data);
-                }
+        try {
+            const response = await fetch('https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production/api/auth', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code }),
             });
-    }
+
+            if (!response.ok) throw new Error('Token exchange failed');
+            const data = await response.json();
+
+            if (window.opener) {
+                // Inform opener that authorization is starting (optional)
+                window.opener.postMessage("authorizing:github", "*");
+
+                // Wait for message from opener before posting back status
+                // The receiveMessage handler above will handle posting back the token
+            } else {
+                window.location.href = "/admin";
+            }
+        } catch (err) {
+            document.body.innerText = "OAuth login failed: " + err.message;
+        }
+    })();
 </script>
 </body>
 </html>
