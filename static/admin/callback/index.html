@@ -14,22 +14,6 @@
             return;
         }
 
-        // Listen for a message from opener before posting auth status back
-        const receiveMessage = (message) => {
-            // Assuming status is success here, you can modify as needed
-            const status = 'success';
-
-            // Post the authorization status and token back to the opener as a string message
-            window.opener.postMessage(
-                `authorization:github:${status}:${JSON.stringify({ token: data.token })}`,
-                '*'
-            );
-
-            // Remove the listener after posting the message
-            window.removeEventListener("message", receiveMessage, false);
-        };
-        window.addEventListener("message", receiveMessage, false);
-
         try {
             const response = await fetch('https://kp4cy6n8jj.execute-api.eu-west-1.amazonaws.com/production/api/auth', {
                 method: 'POST',
@@ -41,11 +25,22 @@
             const data = await response.json();
 
             if (window.opener) {
-                // Inform opener that authorization is starting (optional)
-                window.opener.postMessage("authorizing:github", "*");
+                const status = 'success';
 
-                // Wait for message from opener before posting back status
-                // The receiveMessage handler above will handle posting back the token
+                // Now that `data` is available, define the listener
+                const receiveMessage = () => {
+                    window.opener.postMessage(
+                        `authorization:github:${status}:${JSON.stringify({ token: data.token })}`,
+                        '*'
+                    );
+                    window.removeEventListener("message", receiveMessage, false);
+                    window.close(); // Close popup after sending
+                };
+
+                window.addEventListener("message", receiveMessage, false);
+
+                // Trigger the event from parent
+                window.opener.postMessage("authorizing:github", "*");
             } else {
                 window.location.href = "/admin";
             }
