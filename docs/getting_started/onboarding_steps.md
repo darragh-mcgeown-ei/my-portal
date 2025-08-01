@@ -2,7 +2,7 @@
 title: Onboarding Procedure
 sidebar_position: 2
 ---
-Amplify Test
+Amplify Test 2
 
 ## What is Lorem Ipsum?
 
