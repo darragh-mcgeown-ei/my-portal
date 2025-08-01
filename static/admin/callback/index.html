@@ -34,7 +34,9 @@
                         },
                         window.location.origin
                     );
-                    window.close();
+                    // setTimeout(() => {
+                    //     window.close();
+                    // }, 10000); // Wait 10 seconds before closing (debug)
                 } else {
                     document.body.innerText = "Error: " + JSON.stringify(data);
                 }
