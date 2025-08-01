@@ -5,6 +5,9 @@
 <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get("code");
+
+
+
     if (!code) {
         document.body.innerText = "Missing GitHub code.";
     } else {
@@ -15,6 +18,11 @@
         })
             .then((res) => res.json())
             .then((data) => {
+
+                console.log("OAuth code:", code);
+                console.log("Auth result:", data);
+                console.log("Window opener:", window.opener);
+
                 if (data.token) {
                     window.opener.postMessage(
                         {
