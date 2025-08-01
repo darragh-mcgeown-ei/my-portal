@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 # How to Register
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Let's discover **Docusaurus in less than 5 minutes**. This is just a test
 
 ## Generate a new site
 
