@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Decap CMS OAuth Callback</title>
+</head>
+<body>
+<script>
+    (async () => {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        if (!code) {
+            document.body.innerText = "Missing code in URL";
+            return;
+        }
+
+        try {
+            const response = await fetch('/api/auth', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ code }),
+            });
+            if (!response.ok) throw new Error('Token exchange failed');
+            const data = await response.json();
+
+            // If CMS opened in a popup, relay back
+            if (window.opener) {
+                window.opener.postMessage({ source: 'decap-cms', payload: data }, '*');
+                window.close();
+            } else {
+                // Otherwise, redirect to /admin
+                window.location.href = '/admin';
+            }
+        } catch (err) {
+            document.body.innerText = "OAuth login failed: " + err.message;
+        }
+    })();
+</script>
+</body>
+</html>
