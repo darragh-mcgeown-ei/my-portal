@@ -4,5 +4,5 @@
   "backgroundColor": "#fff3cd",
   "textColor": "#212529",
   "isCloseable": false,
-  "enabled": false
+  "enabled": true
 }
