@@ -6,151 +6,201 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+const fs = require('fs');
+const path = require('path');
+
+const announcementPath = path.resolve(__dirname, 'data/announcement.json');
+let announcementBar;
+
+if (fs.existsSync(announcementPath)) {
+    const fullData = JSON.parse(fs.readFileSync(announcementPath, 'utf8'));
+
+    // Remove invalid field before passing to Docusaurus
+    const { enabled, ...cleanData } = fullData;
+
+    if (enabled && cleanData.content?.trim()) {
+        announcementBar = cleanData;
+    }
+}
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+    title: 'Aer Lingus NDC',
+    tagline: 'Aer Lingus NDC allows you to offer your customers a more flexible, customised and personalised experience with our airline. Here’s how we’re providing this convenient new standardised distribution channel, so you can best utilise it.',
+    favicon: 'img/favicon.ico',
 
-  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
-  future: {
-    v4: true, // Improve compatibility with the upcoming Docusaurus v4
-  },
+    // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+    future: {
+        v4: true, // Improve compatibility with the upcoming Docusaurus v4
+    },
 
-  // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+    markdown: {
+        mermaid: true,
+    },
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+    themes: ['@docusaurus/theme-mermaid'],
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+    // Set the production url of your site here
+    url: 'https://darragh-mcgeown-ei.github.io',
+    baseUrl: '/',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
-  i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
-  },
+    // GitHub pages deployment config.
+    // If you aren't using GitHub pages, you don't need these.
+    organizationName: 'darragh-mcgeown-ei',
+    projectName: 'my-portal',
 
-  presets: [
-    [
-      'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
-        docs: {
-          sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          feedOptions: {
-            type: ['rss', 'atom'],
-            xslt: true,
-          },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          // Useful options to enforce blogging best practices
-          onInlineTags: 'warn',
-          onInlineAuthors: 'warn',
-          onUntruncatedBlogPosts: 'warn',
-        },
-        theme: {
-          customCss: './src/css/custom.css',
-        },
-      }),
+    onBrokenLinks: 'warn',
+    onBrokenMarkdownLinks: 'warn',
+
+    // Even if you don't use internationalization, you can use this field to set
+    // useful metadata like html lang. For example, if your site is Chinese, you
+    // may want to replace "en" with "zh-Hans".
+    i18n: {
+        defaultLocale: 'en',
+        locales: ['en'],
+    },
+
+    presets: [
+        [
+            'classic',
+            /** @type {import('@docusaurus/preset-classic').Options} */
+            ({
+                docs: {
+                    sidebarPath: './sidebars.js',
+                    // Please change this to your repo.
+                    // Remove this to remove the "edit this page" links.
+                    // editUrl:
+                    //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                },
+                // blog: {
+                //   showReadingTime: true,
+                //   feedOptions: {
+                //     type: ['rss', 'atom'],
+                //     xslt: true,
+                //   },
+                //   // Please change this to your repo.
+                //   // Remove this to remove the "edit this page" links.
+                //   // editUrl:
+                //   //   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+                //   // Useful options to enforce blogging best practices
+                //   onInlineTags: 'warn',
+                //   onInlineAuthors: 'warn',
+                //   onUntruncatedBlogPosts: 'warn',
+                // },
+                theme: {
+                    customCss: './src/css/custom.css',
+                },
+            }),
+        ],
     ],
-  ],
 
-  themeConfig:
+    themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
-      navbar: {
-        title: 'My Site',
-        logo: {
-          alt: 'My Site Logo',
-          src: 'img/logo.svg',
-        },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
-          },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            href: 'https://github.com/facebook/docusaurus',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Docs',
-            items: [
-              {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
-      },
-    }),
+        ({
+            announcementBar: announcementBar,
+            colorMode: {
+                defaultMode: 'light',
+                disableSwitch: true,
+            },
+            navbar: {
+                logo: {
+                    alt: 'AerLingus',
+                    src: 'img/aer-lingus-logo.svg',
+                },
+                items: [
+                    {to: '/', label: 'Home', position: 'right'},
+                    {
+                        type: 'docSidebar',
+                        sidebarId: 'tutorialSidebar',
+                        position: 'right',
+                        label: 'Documentation',
+                    },
+                    {to: '/', label: 'Support', position: 'right'},
+                    {
+                        to: '/register',
+                        label: 'Register',
+                        position: 'right',
+                    }
+                ],
+            },
+            footer: {
+                links: [
+                    {
+                        title: 'Legal',
+                        items: [
+                            {
+                                label: 'Conditions of Carriage',
+                                to: '/docs/legal/conditions_of_carriage',
+                            },
+                            {
+                                label: 'Imprint',
+                                to: '/docs/legal/imprint',
+                            },
+                            {
+                                label: 'Terms of Use',
+                                to: '/docs/legal/terms_of_use',
+                            },
+                            {
+                                label: 'Privacy Statement',
+                                to: '/docs/legal/privacy_statement',
+                            },
+                            {
+                                label: 'Acceptable Usage Policy',
+                                to: '/docs/legal/acceptable_usage_policy',
+                            },
+                            {
+                                label: 'Cookie Policy',
+                                to: '/docs/legal/cookie_policy',
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Connect with us',
+                        items: [
+                            {
+                                label: 'X',
+                                to: '/',
+                            },
+                            {
+                                label: 'Youtube',
+                                to: '/',
+                            },
+                            {
+                                label: 'Facebook',
+                                to: '/',
+                            },
+                        ],
+                    },
+                    {
+                        title: 'Help and Support',
+                        items: [
+                            {
+                                label: 'Contact Us',
+                                to: '/',
+                            },
+                            {
+                                label: 'Support',
+                                to: '/',
+                            },{
+                                label: 'Sitemap',
+                                to: '/',
+                            },
+                            {
+                                label: 'Cookie Settings',
+                                to: '/',
+                            },
+                        ],
+                    },
+                ],
+                copyright: `Copyright © ${new Date().getFullYear()} Aer Lingus Group DAC and Aer Lingus Ltd. All rights reserved`,
+            },
+            prism: {
+              theme: prismThemes.github,
+              darkTheme: prismThemes.dracula,
+            }
+        }),
 };
 
 export default config;

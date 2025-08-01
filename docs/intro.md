@@ -1,47 +1,99 @@
 ---
+title: Introduction
 sidebar_position: 1
 ---
+## Heading 2
 
-# Tutorial Intro
+### Heading 3
 
-Let's discover **Docusaurus in less than 5 minutes**.
+#### Heading 4
 
-## Getting Started
+## Information Panels
 
-Get started by **creating a new site**.
+:::note
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
+:::
+:::tip
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
+:::
+:::info
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
+:::
+:::warning
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
+:::
+:::danger
+Some **content** with *Markdown* `syntax`. Check [this `api`](#).
+:::
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+## Code Blocks
 
-### What you'll need
-
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
-
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
+```jsx
+function HelloCodeTitle(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+## Mermaid Diagrams
 
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+```mermaid
+quadrantChart
+title Reach and engagement of campaigns
+x-axis Low Reach --> High Reach
+y-axis Low Engagement --> High Engagement
+quadrant-1 We should expand
+quadrant-2 Need to promote
+quadrant-3 Re-evaluate
+quadrant-4 May be improved
+Campaign A: [0.3, 0.6]
+Campaign B: [0.45, 0.23]
+Campaign C: [0.57, 0.69]
+Campaign D: [0.78, 0.34]
+Campaign E: [0.40, 0.34]
+Campaign F: [0.35, 0.78]
+```
 
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+      ::icon(fa fa-book)
+      Popularisation
+        British popular psychology author Tony Buzan
+    Research
+      On effectiveness<br/>and features
+      On Automatic creation
+        Uses
+            Creative techniques
+            Strategic planning
+            Argument mapping
+    Tools
+      Pen and paper
+      Mermaid
+```
+
+```mermaid
+radar-beta
+  axis m["Math"], s["Science"], e["English"]
+  axis h["History"], g["Geography"], a["Art"]
+  curve a["Alice"]{85, 90, 80, 70, 75, 90}
+  curve b["Bob"]{70, 75, 85, 80, 90, 85}
+
+  max 100
+  min 0
+```
+
+## Inline Code Highlight
 The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+## Images
+![](/img/screenshot-2025-07-16-at-10.06.53.png)

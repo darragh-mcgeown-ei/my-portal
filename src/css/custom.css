@@ -6,25 +6,193 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-color-primary: #2e8555;
+    --ifm-color-primary-dark: #29784c;
+    --ifm-color-primary-darker: #277148;
+    --ifm-color-primary-darkest: #205d3b;
+    --ifm-color-primary-light: #33925d;
+    --ifm-color-primary-lighter: #359962;
+    --ifm-color-primary-lightest: #3cad6e;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-table-head-background: transparent;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --ifm-color-primary: #25c2a0;
+    --ifm-color-primary-dark: #21af90;
+    --ifm-color-primary-darker: #1fa588;
+    --ifm-color-primary-darkest: #1a8870;
+    --ifm-color-primary-light: #29d5b0;
+    --ifm-color-primary-lighter: #32d8b4;
+    --ifm-color-primary-lightest: #4fddbf;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.navbar {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.navbar a {
+    color: #006272;
+    font-size: 16px !important;
+}
+
+.navbar-button {
+    background-color: #0078e7;
+    color: white !important;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.navbar-button:hover {
+    background-color: #005bb5;
+}
+
+.navbar__logo {
+    margin-left: 20px;
+}
+
+.navbar__items {
+    margin-right: 20px;
+}
+
+body, h1, h2, h3 {
+    font-family: Diodrum-Regular, Helvetica, Arial, sans-serif !important;
+}
+
+.menu__link {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.menu__list-item--collapsed .menu__link--sublist:after, .menu__list-item--collapsed .menu__caret:before {
+    transform: rotate(90deg) scale(0.6); /* Adjust size here */
+}
+
+.menu__link--sublist-caret:after {
+    transform: rotate(180deg) scale(0.6);
+}
+
+.markdown table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.markdown tr {
+    background-color: transparent;
+}
+
+.markdown th {
+    font-weight: 550;
+}
+
+.markdown td {
+    font-weight: 400;
+}
+
+.markdown td p {
+    margin: 0;
+}
+
+.markdown thead {
+    background-color: transparent !important;
+}
+
+.markdown th,
+.markdown td {
+    background-color: transparent !important;
+    border-left: none;
+    border-right: none;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    vertical-align: top;
+}
+
+.markdown th:nth-child(1),
+.markdown td:nth-child(1) {
+    width: 15%;
+}
+
+.markdown th:nth-child(2),
+.markdown td:nth-child(2) {
+    width: 75%;
+}
+
+.markdown th:nth-child(3),
+.markdown td:nth-child(3) {
+    width: 10%;
+}
+
+.ei-xml-snippet {
+    background: transparent;
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+}
+
+.ei-xml-snippet summary {
+    padding-left: 0;
+    font-size: 14px;
+    color: #33925d
+}
+
+.ei-xml-snippet summary::before {
+    display: none;
+}
+
+.ei-xml-snippet div {
+    border-top: none;
+    margin: 0;
+    padding: 0;
+}
+
+.theme-announcement-bar {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.hero--primary {
+    background: #006272 url(../../static/img/bg_shamrock.svg) no-repeat calc(100% + 95px) 115px;
+    min-height: 400px;
+    text-align: left !important;
+}
+
+.hero--primary p, div {
+    font-size: 18px;
+}
+
+@media (min-width: 1440px) {
+    .hero--primary > .container {
+        max-width: 1170px !important;
+    }
+}
+
+
+.hero__subtitle {
+    max-width: 784px;
+}
+
+.footer {
+    background: #f9f9f9;
+    color: #63666a;
+    font-size: 16px;
+}
+
+.footer__link-item, .footer__title {
+    color: #63666a;
+    font-size: 16px;
+}
+
+.footer__copyright {
+    font-size: 14px;
 }
