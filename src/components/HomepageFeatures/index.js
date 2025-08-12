@@ -57,11 +57,6 @@ export default function HomepageFeatures() {
           ))}
         </div>
       </div>
-        adssd
-        <div className="status-wrap" role="status" aria-live="polite" aria-atomic="true">
-            <span className="status-dot status--operational" aria-hidden="true"></span>
-            <span className="status-label">Operational</span>
-        </div>
     </section>
   );
 }
