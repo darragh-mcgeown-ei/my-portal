@@ -355,3 +355,118 @@ body, h1, h2, h3 {
     padding: 0 20px 0 0;
     margin: 0;
 }
+
+
+/* Table basics (optional - adapt to your theme) */
+.status-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--ifm-font-base-family, system-ui, -apple-system, "Segoe UI", Roboto);
+}
+.status-table th,
+.status-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid #e6e9ef;
+    vertical-align: top;
+}
+
+/* Incident list layout */
+.incidents-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;            /* vertical gap between incidents */
+    max-width: 100%;
+}
+
+/* Single incident row */
+.incident-item {
+    display: block;
+    background: transparent;
+}
+
+/* top row: title + badge aligned */
+.incident-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Title: single-line ellipsis to avoid overflowing */
+.incident-title {
+    display: inline-block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ifm-color-emphasis, #111827);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1 1 auto; /* take remaining space so badge sits to the right */
+    min-width: 0;   /* required for ellipsis in flex */
+}
+
+/* Badge / pill */
+.incident-badge {
+    flex: 0 0 auto;
+    font-size: 0.75rem;
+    padding: 0px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+    text-transform: none;
+    /*color: white;*/
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+/* Badge colours */
+.badge-investigating { background: lightgray } /* amber/orange */
+.badge-identified   { background: #2563eb;} /* darker amber */
+.badge-monitoring   { background: #2563eb; } /* blue */
+.badge-resolved     { background: #2563eb; } /* green */
+.badge-maintenance  { background: #2563eb; } /* grey */
+
+/* Meta (muted small text) */
+.incident-meta {
+    /*margin-top: 4px;*/
+    font-size: 0.85rem;
+    color: var(--ifm-color-gray-600, #6b7280);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* small separator dot */
+.meta-sep {
+    color: var(--ifm-color-gray-400, #9ca3af);
+}
+
+/* incident id style */
+.incident-id {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+    font-size: 0.82rem;
+    color: var(--ifm-color-gray-500, #9ca3af);
+}
+
+/* No incidents */
+.no-incidents {
+    color: var(--ifm-color-gray-600, #6b7280);
+    font-style: italic;
+    padding: 6px 0;
+}
+
+/* Responsive: keep things tidy */
+@media (max-width: 640px) {
+    .incident-top { gap: 8px; }
+    .incident-title { font-size: 0.92rem; }
+    .incident-meta { font-size: 0.8rem; gap: 4px; }
+    .incident-badge { font-size: 0.72rem;}
+}
+
+.margin-t10 {
+    margin-top: 10px;
+}
+
+.margin-t6 {
+    margin-top: 7px;
+}

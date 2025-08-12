@@ -41,7 +41,6 @@ export default function HealthCheckTable() {
                             <colgroup>
                                 <col style={{minWidth: 30 + '%'}}></col>
                                 <col style={{minWidth: 40 + '%'}}></col>
-                                <col style={{minWidth: 30 + '%'}}></col>
                             </colgroup>
                             <tbody>
                             {componentGroup.components.map((component) => {
@@ -57,11 +56,20 @@ export default function HealthCheckTable() {
                                 let mappedRelatedIncidents = <span style={{color: "grey", fontStyle: "italic"}}>No active incidents for this component</span>
 
                                 if(relatedIncidents.length > 0) {
-                                    mappedRelatedIncidents = relatedIncidents.map(relatedIncident => {
-                                        return <li>
-                                            <Link to={"https://playground13.statuspage.io/incidents/" + relatedIncident.id}>
-                                                {relatedIncident.name} ({relatedIncident.status})
-                                            </Link>
+                                    mappedRelatedIncidents = relatedIncidents.map((relatedIncident, index) => {
+                                        const spacingClass = index > 0 ? "margin-t10": "margin-t6";
+                                        return <li className="incident-item" key={index}>
+                                            <div className={"incident-top " + spacingClass}>
+                                                  <span className="incident-title" title={relatedIncident.name}>
+                                                         <Link to={"https://playground13.statuspage.io/incidents/" + relatedIncident.id}>
+                                                             {relatedIncident.name}
+                                                         </Link>
+                                                  </span>
+                                                <span className="incident-badge badge-investigating" aria-hidden="true">{relatedIncident.status}</span>
+                                            </div>
+                                            <div className="incident-meta">
+                                                <span>Last updated {lastUpdated}</span>
+                                            </div>
                                         </li>
                                     })
                                 }
@@ -77,7 +85,6 @@ export default function HealthCheckTable() {
                                     <td>
                                         <ul>{mappedRelatedIncidents}</ul>
                                     </td>
-                                    <td>Last updated {lastUpdated}</td>
                                 </tr>
                             })}
                             </tbody>
