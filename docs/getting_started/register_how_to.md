@@ -2,7 +2,7 @@
 title: How to Register
 sidebar_position: 2
 ---
-# How to Register
+# How to Register111
 
 Let's discover **Docusaurus in less than 5 minutes**. This is just a test
 
