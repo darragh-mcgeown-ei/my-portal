@@ -1,52 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
+import moment from 'moment';
+import Link from "@docusaurus/core/lib/client/exports/Link";
 
 export default function HealthCheckTable() {
-    const [results, setResults] = useState([]);
-    const [loading, setLoading] = useState(true);
+
+    const [status, setStatus] = useState({
+        componentGroups: []
+    });
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                const res = await fetch('https://ndc.aerlingus.com/prod/ndc-portal/b2b-health.json'); // Replace with your real endpoint
-                const data = await res.json();
-                setResults(data);
-            } catch (err) {
-                console.error('Failed to fetch healthcheck data:', err);
-            } finally {
-                setLoading(false);
-            }
-        }
-
-        fetchData();
-        const interval = setInterval(fetchData, 30000); // poll every 30s
-        return () => clearInterval(interval);
+        fetch('https://zx3l5jx0g3d2.statuspage.io/api/v2/summary.json')
+            .then(res => res.json())
+            .then(data => {
+                // map the groups
+                data.componentGroups = data.components.filter(it => it.group).map(group => {
+                    // populate with components
+                    return {
+                        ...group,
+                        components: data.components.filter(component => group.id === component.group_id),
+                    }
+                })
+                setStatus(data)
+            })
+            .catch(console.error);
     }, []);
 
-    if (loading) return <p>Loading health check results…</p>;
-
     return (
-        <div className={"container"}>
-            <h2>Service Status</h2>
-        <table className="health-table">
-            <thead>
-            <tr>
-                <th>Service</th>
-                <th>Status</th>
-                <th>Response Time (ms)</th>
-            </tr>
-            </thead>
-            <tbody>
-            {results.map((item) => (
-                <tr key={item.service}>
-                    <td>{item.service}</td>
-                    <td style={{ color: item.status === 'up' ? 'green' : 'red', fontWeight: 'bold' }}>
-                        {item.status.toUpperCase()}
-                    </td>
-                    <td>{item.responseTime}</td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
+        <div className={"container"} >
+            {
+                status.componentGroups.map(componentGroup => {
+                    return <div key={componentGroup.id} style={{paddingLeft: 50 + 'px'}}>
+                        <h2>
+                            <span className="ring-container">
+                                <span className="ringring" status={componentGroup.status}></span>
+                                <span className="circle" status={componentGroup.status}></span>
+                            </span>
+                            <span>{componentGroup.name} Status</span>
+                        </h2>
+                        <table className="health-table">
+                            <tbody>
+                            {componentGroup.components.map((component) => {
+                                const lastUpdated = moment(component.updated_at).fromNow();
+                                return <tr key={component.id}>
+                                    <td>
+                                        <span className="ring-container">
+                                            <span className="ringring" status={component.status}></span>
+                                            <span className="circle" status={component.status}></span>
+                                        </span>
+                                        <span>{component.name}</span>
+                                    </td>
+                                    <td>No issues reported</td>
+                                    <td>Last updated {lastUpdated} ago</td>
+                                </tr>
+                            })}
+                            </tbody>
+                        </table>
+                    </div>
+                })
+
+            }
+            <div style={{paddingLeft: 50 + 'px', paddingBottom: 100 + 'px'}}>
+                Visit our&nbsp;
+                <Link to={"https://playground13.statuspage.io/"}>full service status page</Link>
+                &nbsp;to view historical uptime and non-production status
+            </div>
         </div>
     );
 }

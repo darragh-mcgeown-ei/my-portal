@@ -99,7 +99,7 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            announcementBar: announcementBar,
+            // announcementBar: announcementBar,
             colorMode: {
                 defaultMode: 'light',
                 disableSwitch: true,
@@ -118,11 +118,6 @@ const config = {
                         label: 'Documentation',
                     },
                     {to: '/', label: 'Support', position: 'right'},
-                    {
-                        to: '/register',
-                        label: 'Register',
-                        position: 'right',
-                    }
                 ],
             },
             footer: {
