@@ -284,6 +284,17 @@ body, h1, h2, h3 {
 
 .health-table {
     margin-bottom: 50px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.health-table th, td {
+    width: auto
+}
+
+.health-table ul {
+    margin: 0;
 }
 
 .circle[status='major_outage'], .circle[status='critical'] {
@@ -296,12 +307,12 @@ body, h1, h2, h3 {
 }
 
 .circle[status='partial_outage'], .circle[status='minor'] {
-    background-color: gold;
+    background-color: darkorange;
 }
 
 .ringring[status='partial_outage'], .circle[status='minor'] {
-    background-color: gold;
-    border: 3px solid gold;
+    background-color: darkorange;
+    border: 3px solid darkorange;
 }
 
 .circle[status='degraded_performance'], .circle[status='major'] {
@@ -322,9 +333,25 @@ body, h1, h2, h3 {
     border: 3px solid steelblue;
 }
 
-.all_systems_status a {
-    display: inline-flex;
+.featureSvg_GfXr {
+    height: 120px !important;
+    width: 120px !important;
+}
+
+.ndc-hero__status {
     align-items: center;
-    padding-left: 15px;
-    padding-right: 15px;
+    background-color: #fff;
+    border-radius: 100px;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+}
+
+.ndc-hero__status-message-text {
+    font-size: .875rem !important;
+    line-height: 1.1;
+    color: rgb(0,98,114);
+    padding: 0 20px 0 0;
+    margin: 0;
 }

@@ -26,7 +26,7 @@ export default function HealthCheckTable() {
     }, []);
 
     return (
-        <div className={"container"} >
+        <div className={"container"}>
             {
                 status.componentGroups.map(componentGroup => {
                     return <div key={componentGroup.id} style={{paddingLeft: 50 + 'px'}}>
@@ -38,9 +38,34 @@ export default function HealthCheckTable() {
                             <span>{componentGroup.name} Status</span>
                         </h2>
                         <table className="health-table">
+                            <colgroup>
+                                <col style={{minWidth: 30 + '%'}}></col>
+                                <col style={{minWidth: 40 + '%'}}></col>
+                                <col style={{minWidth: 30 + '%'}}></col>
+                            </colgroup>
                             <tbody>
                             {componentGroup.components.map((component) => {
                                 const lastUpdated = moment(component.updated_at).fromNow();
+
+                                const relatedIncidents = status.incidents.filter(incident => {
+                                    let incidentsFound = incident.components.find(incidentComponent => {
+                                        return incidentComponent.id === component.id;
+                                    });
+                                    return !!incidentsFound
+                                })
+
+                                let mappedRelatedIncidents = <span style={{color: "grey", fontStyle: "italic"}}>No active incidents for this component</span>
+
+                                if(relatedIncidents.length > 0) {
+                                    mappedRelatedIncidents = relatedIncidents.map(relatedIncident => {
+                                        return <li>
+                                            <Link to={"https://playground13.statuspage.io/incidents/" + relatedIncident.id}>
+                                                {relatedIncident.name} ({relatedIncident.status})
+                                            </Link>
+                                        </li>
+                                    })
+                                }
+
                                 return <tr key={component.id}>
                                     <td>
                                         <span className="ring-container">
@@ -49,8 +74,10 @@ export default function HealthCheckTable() {
                                         </span>
                                         <span>{component.name}</span>
                                     </td>
-                                    <td>No issues reported</td>
-                                    <td>Last updated {lastUpdated} ago</td>
+                                    <td>
+                                        <ul>{mappedRelatedIncidents}</ul>
+                                    </td>
+                                    <td>Last updated {lastUpdated}</td>
                                 </tr>
                             })}
                             </tbody>

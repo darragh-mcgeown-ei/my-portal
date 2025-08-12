@@ -9,17 +9,8 @@ import React, {useEffect, useState} from "react"
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-function HomepageHeader() {
+function HomepageHeader({status}) {
     const {siteConfig} = useDocusaurusContext();
-
-    const [status, setStatus] = useState(null);
-
-    useEffect(() => {
-        fetch('https://zx3l5jx0g3d2.statuspage.io/api/v2/summary.json')
-            .then(res => res.json())
-            .then(data => setStatus(data))
-            .catch(console.error);
-    }, []);
 
     return (
         <header className={clsx('hero hero--primary', styles.heroBanner)}>
@@ -28,14 +19,16 @@ function HomepageHeader() {
                     {siteConfig.title}
                 </Heading>
                 <p className="hero__subtitle">{siteConfig.tagline}</p>
-                <div className={"all_systems_status"}>
-                    <Link className="button button--secondary button--lg">
-                        <span className="ring-container">
-                            <span className="ringring" status={status ? status.status.indicator : "operational"}></span>
-                            <span className="circle" status={status ? status.status.indicator : "operational"}></span>
-                        </span>
-                        {status ? status.status.description : "All Systems Operational"}
-                    </Link>
+                <div className="ndc-hero__status all_systems_status">
+                    <span className="ring-container">
+                        <span className="ringring" status={status ? status.status.indicator : "operational"}></span>
+                        <span className="circle" status={status ? status.status.indicator : "operational"}></span>
+                    </span>
+                    <div className="ndc-hero__status-message">
+                        <a className="ndc-hero__status-message-text" href={"https://playground13.statuspage.io/"} target={"_blank"}>
+                            {status ? status.status.description : "All Systems Operational"}
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -45,14 +38,29 @@ function HomepageHeader() {
 
 export default function Home() {
     const {siteConfig} = useDocusaurusContext();
+
+    const [status, setStatus] = useState({
+        status: {indicator: "operational"},
+        componentGroups: []
+    });
+
+    useEffect(() => {
+        fetch('https://zx3l5jx0g3d2.statuspage.io/api/v2/summary.json')
+            .then(res => res.json())
+            .then(data => setStatus(data))
+            .catch(console.error);
+    }, []);
+
+    console.log(status)
+
     return (
         <Layout
             title={`Hello from ${siteConfig.title}`}
             description="Description will go into a meta tag in <head />">
-            <HomepageHeader/>
+            <HomepageHeader status={status}/>
             <main>
                 <HomepageFeatures/>
-                <HealthCheckTable/>
+                <HealthCheckTable status={status}/>
             </main>
         </Layout>
     );
