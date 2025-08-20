@@ -1,102 +1,100 @@
 import React, {useEffect, useState} from 'react';
 import moment from 'moment';
 import Link from "@docusaurus/core/lib/client/exports/Link";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCircleXmark, faCircleCheck, faChartLine, faTriangleExclamation} from '@fortawesome/free-solid-svg-icons'
 
-export default function HealthCheckTable() {
+const _ = require('lodash');
 
-    const [status, setStatus] = useState({
-        componentGroups: []
-    });
+export default function HealthCheckTable(props) {
+    const [expanded, setExpanded] = useState({});
+    const {components, active_incidents} = props;
+    const componentGroups = components.filter(component => component.is_group)
+    componentGroups.forEach(group => group.components = components.filter(component => component.group_id === group.pk))
 
-    useEffect(() => {
-        fetch('https://zx3l5jx0g3d2.statuspage.io/api/v2/summary.json')
-            .then(res => res.json())
-            .then(data => {
-                // map the groups
-                data.componentGroups = data.components.filter(it => it.group).map(group => {
-                    // populate with components
-                    return {
-                        ...group,
-                        components: data.components.filter(component => group.id === component.group_id),
-                    }
-                })
-                setStatus(data)
-            })
-            .catch(console.error);
-    }, []);
+    const mappedComponentGroups = componentGroups.map(group => {
+
+        let groupStatus = _.replace(group.status, "-", " ")
+        groupStatus = _.startCase(groupStatus);
+
+        // prepare icon
+        let icon = <FontAwesomeIcon icon={faCircleCheck}/>;
+        if (group.status === "major-outage") {
+            icon = <FontAwesomeIcon icon={faCircleXmark}/>
+        } else if (group.status === "degraded-performance") {
+            icon = <FontAwesomeIcon icon={faChartLine} />
+        } else if(group.status === "partial-outage") {
+            icon = <FontAwesomeIcon icon={faTriangleExclamation} />
+        }
+
+        const mappedComponents = group.components.map(component => {
+            // prepare status text
+            let status = _.replace(component.status, "-", " ")
+            status = _.startCase(status);
+            // prepare icon
+            let icon = <FontAwesomeIcon icon={faCircleCheck}/>;
+            if (component.status === "major-outage") {
+                icon = <FontAwesomeIcon icon={faCircleXmark}/>
+            } else if (component.status === "degraded-performance") {
+                icon = <FontAwesomeIcon icon={faChartLine} />
+            } else if(component.status === "partial-outage") {
+                icon = <FontAwesomeIcon icon={faTriangleExclamation} />
+            }
+
+            return <div className={"incident"} status={component.status}>
+                <div className={"incident-indicator"}/>
+                <div className={"incident-heading"}>
+                    <a href={"https://uptime.com/statuspage/ei-ndc-status"}>{component.name}</a>
+                </div>
+                <div className={"incident-status"}>
+                    {icon}
+                    {status}
+                </div>
+            </div>
+        })
+
+        const toggleIncident = (id) => {
+            setExpanded((prev) => ({
+                ...prev,
+                [id]: !prev[id], // flip state for this incident
+            }));
+        };
+        // managed expanded settings
+
+        const expandedClass = expanded[group.pk] ? "expanded" : "";
+        // render group
+        return <div key={group.pk} style={{paddingLeft: 50 + 'px'}}>
+            <div className={"incident incident-group"} status={group.status}
+                 onClick={() => toggleIncident(group.pk)}>
+                <div className={"incident-indicator"}/>
+                <div className={"incident-heading"}>
+                    <span className={`caret ${expandedClass}`}/>
+                    {group.name}
+                </div>
+                <div className={"incident-status"}>
+                    {icon}
+                    {groupStatus}
+                </div>
+            </div>
+            <div className={"incident-subcomponent-list"}>
+                {expanded[group.pk] && mappedComponents}
+            </div>
+        </div>
+    })
 
     return (
         <div className={"container"}>
-            {
-                status.componentGroups.map(componentGroup => {
-                    return <div key={componentGroup.id} style={{paddingLeft: 50 + 'px'}}>
-                        <h2>
-                            <span className="ring-container">
-                                <span className="ringring" status={componentGroup.status}></span>
-                                <span className="circle" status={componentGroup.status}></span>
-                            </span>
-                            <span>{componentGroup.name} Status</span>
-                        </h2>
-                        <table className="health-table">
-                            <colgroup>
-                                <col style={{minWidth: 30 + '%'}}></col>
-                                <col style={{minWidth: 40 + '%'}}></col>
-                            </colgroup>
-                            <tbody>
-                            {componentGroup.components.map((component) => {
-                                const lastUpdated = moment(component.updated_at).fromNow();
+            <div>
+                <h3 style={{paddingLeft: 50 + 'px'}}>Scheduled Maintenance</h3>
 
-                                const relatedIncidents = status.incidents.filter(incident => {
-                                    let incidentsFound = incident.components.find(incidentComponent => {
-                                        return incidentComponent.id === component.id;
-                                    });
-                                    return !!incidentsFound
-                                })
 
-                                let mappedRelatedIncidents = <span style={{color: "grey", fontStyle: "italic"}}>No active incidents for this component</span>
-
-                                if(relatedIncidents.length > 0) {
-                                    mappedRelatedIncidents = relatedIncidents.map((relatedIncident, index) => {
-                                        const spacingClass = index > 0 ? "margin-t10": "margin-t6";
-                                        return <li className="incident-item" key={index}>
-                                            <div className={"incident-top " + spacingClass}>
-                                                  <span className="incident-title" title={relatedIncident.name}>
-                                                         <Link to={"https://playground13.statuspage.io/incidents/" + relatedIncident.id}>
-                                                             {relatedIncident.name}
-                                                         </Link>
-                                                  </span>
-                                                <span className="incident-badge badge-investigating" aria-hidden="true">{relatedIncident.status}</span>
-                                            </div>
-                                            <div className="incident-meta">
-                                                <span>Last updated {lastUpdated}</span>
-                                            </div>
-                                        </li>
-                                    })
-                                }
-
-                                return <tr key={component.id}>
-                                    <td>
-                                        <span className="ring-container">
-                                            <span className="ringring" status={component.status}></span>
-                                            <span className="circle" status={component.status}></span>
-                                        </span>
-                                        <span>{component.name}</span>
-                                    </td>
-                                    <td>
-                                        <ul>{mappedRelatedIncidents}</ul>
-                                    </td>
-                                </tr>
-                            })}
-                            </tbody>
-                        </table>
-                    </div>
-                })
-
-            }
-            <div style={{paddingLeft: 50 + 'px', paddingBottom: 100 + 'px'}}>
-                Visit our&nbsp;
-                <Link to={"https://playground13.statuspage.io/"}>full service status page</Link>
-                &nbsp;to view historical uptime and non-production status
+                <h3 style={{paddingLeft: 50 + 'px'}}>Service Status</h3>
+                {mappedComponentGroups}
+                <div style={{paddingLeft: 50 + 'px', paddingBottom: 100 + 'px', paddingTop:15 + 'px'}}>
+                    Visit our&nbsp;
+                    <Link to={"https://uptime.com/statuspage/ei-ndc-status"}>full service status page</Link>
+                    &nbsp;to view historical uptime and non-production status
+                </div>
             </div>
         </div>
     );

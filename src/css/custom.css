@@ -297,41 +297,26 @@ body, h1, h2, h3 {
     margin: 0;
 }
 
-.circle[status='major_outage'], .circle[status='critical'] {
-    background-color: red;
+.ring-container[status='outage'] >  .circle, .ringring {
+    background-color: rgb(220, 53, 69);
 }
 
-.ringring[status='major_outage'], .circle[status='critical'] {
-    background-color: red;
+.ring-container[status='major-outage'] >  .circle, .ringring {
+    background-color: rgb(220, 53, 69);
+}
+
+.ring-container[status='degraded-performance'] >  .circle, .ringring {
+    background-color: orange;
+}
+
+.ring-container[status='outage'] > .ringring {
     border: 3px solid red;
 }
 
-.circle[status='partial_outage'], .circle[status='minor'] {
-    background-color: darkorange;
-}
 
-.ringring[status='partial_outage'], .circle[status='minor'] {
-    background-color: darkorange;
-    border: 3px solid darkorange;
-}
+/*.ringring[status='major_outage'], .circle[status='critical'] {*/
+/*    background-color: red;*/
 
-.circle[status='degraded_performance'], .circle[status='major'] {
-    background-color: darkorange;
-}
-
-.ringring[status='degraded_performance'], .circle[status='major'] {
-    background-color: darkorange;
-    border: 3px solid darkorange;
-}
-
-.circle[status='under_maintenance'] {
-    background-color: steelblue;
-}
-
-.ringring[status='under_maintenance'] {
-    background-color: steelblue;
-    border: 3px solid steelblue;
-}
 
 .featureSvg_GfXr {
     height: 120px !important;
@@ -351,11 +336,20 @@ body, h1, h2, h3 {
 .ndc-hero__status-message-text {
     font-size: .875rem !important;
     line-height: 1.1;
-    color: rgb(0,98,114);
+    color: rgb(0, 98, 114);
     padding: 0 20px 0 0;
     margin: 0;
 }
 
+.ndc-hero__status-message[status='outage'] > .ndc-hero__status-message-text {
+    color: rgb(220, 53, 69);
+    font-weight: 600;
+}
+
+.ndc-hero__status-message[status='degraded-performance'] > .ndc-hero__status-message-text {
+    color: orange;
+    font-weight: 600;
+}
 
 /* Table basics (optional - adapt to your theme) */
 .status-table {
@@ -363,6 +357,7 @@ body, h1, h2, h3 {
     border-collapse: collapse;
     font-family: var(--ifm-font-base-family, system-ui, -apple-system, "Segoe UI", Roboto);
 }
+
 .status-table th,
 .status-table td {
     padding: 12px 10px;
@@ -376,7 +371,7 @@ body, h1, h2, h3 {
     margin: 0;
     padding: 0;
     display: grid;
-    gap: 10px;            /* vertical gap between incidents */
+    gap: 10px; /* vertical gap between incidents */
     max-width: 100%;
 }
 
@@ -403,7 +398,7 @@ body, h1, h2, h3 {
     overflow: hidden;
     text-overflow: ellipsis;
     flex: 1 1 auto; /* take remaining space so badge sits to the right */
-    min-width: 0;   /* required for ellipsis in flex */
+    min-width: 0; /* required for ellipsis in flex */
 }
 
 /* Badge / pill */
@@ -420,11 +415,31 @@ body, h1, h2, h3 {
 }
 
 /* Badge colours */
-.badge-investigating { background: lightgray } /* amber/orange */
-.badge-identified   { background: #2563eb;} /* darker amber */
-.badge-monitoring   { background: #2563eb; } /* blue */
-.badge-resolved     { background: #2563eb; } /* green */
-.badge-maintenance  { background: #2563eb; } /* grey */
+.badge-investigating {
+    background: lightgray
+}
+
+/* amber/orange */
+.badge-identified {
+    background: #2563eb;
+}
+
+/* darker amber */
+.badge-monitoring {
+    background: #2563eb;
+}
+
+/* blue */
+.badge-resolved {
+    background: #2563eb;
+}
+
+/* green */
+.badge-maintenance {
+    background: #2563eb;
+}
+
+/* grey */
 
 /* Meta (muted small text) */
 .incident-meta {
@@ -457,10 +472,22 @@ body, h1, h2, h3 {
 
 /* Responsive: keep things tidy */
 @media (max-width: 640px) {
-    .incident-top { gap: 8px; }
-    .incident-title { font-size: 0.92rem; }
-    .incident-meta { font-size: 0.8rem; gap: 4px; }
-    .incident-badge { font-size: 0.72rem;}
+    .incident-top {
+        gap: 8px;
+    }
+
+    .incident-title {
+        font-size: 0.92rem;
+    }
+
+    .incident-meta {
+        font-size: 0.8rem;
+        gap: 4px;
+    }
+
+    .incident-badge {
+        font-size: 0.72rem;
+    }
 }
 
 .margin-t10 {
@@ -469,4 +496,106 @@ body, h1, h2, h3 {
 
 .margin-t6 {
     margin-top: 7px;
+}
+
+.incident-subcomponent-list {
+    padding-left: 15px;
+}
+
+.incident-subcomponent-list .incident {
+    cursor: default;
+}
+
+.incident {
+    display: flex;
+    flex-direction: row;
+    margin: 6px 0 6px 0;
+    border: solid lightgray 1px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.incident-group:first-of-type {
+    margin: 15px 0 6px 0;
+}
+
+.incident-group .incident-heading {
+    font-weight: 600;
+}
+
+.incident-subcomponent-list .incident-heading {
+    padding: 8px 2rem 8px 30px;
+}
+
+.incident a {
+    color: black;
+}
+
+.incident a:hover {
+    color: #006272;
+}
+
+.incident[status='major-outage'] > .incident-indicator {
+    background-color: rgb(220, 53, 69);
+}
+
+.incident[status='degraded-performance'] > .incident-indicator {
+    background-color: orange;
+}
+
+.incident[status='partial-outage'] > .incident-indicator {
+    background-color: darkorange;
+}
+
+.incident-status svg {
+    color: #006272;
+    margin: 0 5px 0 5px;
+}
+
+.incident[status='major-outage'] svg {
+    color: rgb(220, 53, 69) !important;
+}
+
+.incident[status='degraded-performance'] svg {
+    color: orange !important;
+}
+
+.incident[status='partial-outage'] svg {
+    color: darkorange !important;
+}
+
+.incident-indicator {
+    max-width: 6px;
+    width: 6px;
+    background-color: #33925d;
+    border-radius: 16px 0 0 16px;
+}
+
+.incident-heading {
+    padding: 8px 2rem 8px 1rem;
+    flex: 1;
+    font-size: 16px !important;
+}
+
+.incident-status {
+    padding: 8px 2rem 8px 1rem;
+    cursor: pointer;
+    font-size: 16px !important;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-right: 10px;
+    vertical-align: middle;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid #333;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Rotate caret when expanded */
+.caret.expanded {
+    transform: rotate(90deg);
 }
