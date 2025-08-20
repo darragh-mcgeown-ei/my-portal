@@ -297,15 +297,15 @@ body, h1, h2, h3 {
     margin: 0;
 }
 
-.ring-container[status='outage'] >  .circle, .ringring {
+.ring-container[status='outage'] > .circle, .ringring {
     background-color: rgb(220, 53, 69);
 }
 
-.ring-container[status='major-outage'] >  .circle, .ringring {
+.ring-container[status='major-outage'] > .circle, .ringring {
     background-color: rgb(220, 53, 69);
 }
 
-.ring-container[status='degraded-performance'] >  .circle, .ringring {
+.ring-container[status='degraded-performance'] > .circle, .ringring {
     background-color: orange;
 }
 
@@ -527,6 +527,28 @@ body, h1, h2, h3 {
     padding: 8px 2rem 8px 30px;
 }
 
+.health-table-container h3:nth-of-type(2) {
+    margin-top: 40px;
+}
+
+.health-table-container h3 svg {
+    margin-right: 10px;
+}
+
+@media (min-width: 961px) {
+    .health-table-container {
+        padding-left: 50px;
+    }
+}
+
+
+.muted {
+    color: slategray;
+    font-size: 12px;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
 .incident a {
     color: black;
 }
@@ -545,6 +567,10 @@ body, h1, h2, h3 {
 
 .incident[status='partial-outage'] > .incident-indicator {
     background-color: darkorange;
+}
+
+.incident[status='maintenance'] > .incident-indicator {
+    background-color: deepskyblue;
 }
 
 .incident-status svg {

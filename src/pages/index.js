@@ -42,6 +42,7 @@ export default function Home() {
     const {siteConfig} = useDocusaurusContext();
     const [uptime, setUptime] = useState({
         active_incidents: [],
+        upcoming_maintenance: [],
         components: []
     });
 
@@ -58,7 +59,8 @@ export default function Home() {
             <HomepageHeader active_incidents={uptime.active_incidents}/>
             <main>
                 <HomepageFeatures/>
-                <HealthCheckTable components={uptime.components} active_incidents={uptime.active_incidents}/>
+                {uptime.pk && <HealthCheckTable components={uptime.components}
+                                                upcoming_maintenance={uptime.upcoming_maintenance}/>}
             </main>
         </Layout>
     );
