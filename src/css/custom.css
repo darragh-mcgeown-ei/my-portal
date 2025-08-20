@@ -528,7 +528,11 @@ body, h1, h2, h3 {
 }
 
 .health-table-container h3 {
-    margin-top: 40px;
+    margin-top: 15px;
+}
+
+.health-table-container h3:nth-of-type(2) {
+    margin-top: 50px;
 }
 
 .health-table-container h3 svg {

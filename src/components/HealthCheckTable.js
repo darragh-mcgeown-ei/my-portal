@@ -131,7 +131,7 @@ export default function HealthCheckTable(props) {
         <div className={"container health-table-container"}>
             <h3>
                 <FontAwesomeIcon icon={faScrewdriverWrench}/>
-                Scheduled Maintenance
+                Upcoming Maintenance
             </h3>
             {upcomingMaintenance}
             <h3>
