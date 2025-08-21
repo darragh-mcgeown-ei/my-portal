@@ -1,8 +1,8 @@
 {
   "id": "july-outage-1893",
   "content": "🚀 New Release: NDC v23.1 is now live! Check the full documentation ➡️ <a href=\"/docs/21_3_api_reference/airshopping\">here</a>.",
-  "backgroundColor": "#ceccca",
-  "textColor": "#212529",
+  "backgroundColor": "#f5f5f5",
+  "textColor": "#010000",
   "isCloseable": true,
   "enabled": true
 }
