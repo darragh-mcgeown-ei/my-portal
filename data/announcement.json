@@ -3,6 +3,6 @@
   "content": "🚨 NDC API experiencing degraded performance.\n\nasdasd\n\nasdasd",
   "backgroundColor": "#fff3cd",
   "textColor": "#212529",
-  "isCloseable": false,
-  "enabled": false
+  "isCloseable": true,
+  "enabled": true
 }
