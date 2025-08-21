@@ -16,6 +16,7 @@
     --ifm-code-font-size: 95%;
     --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
     --ifm-table-head-background: transparent;
+    --ei-primary-bg-color: #006272
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -36,22 +37,8 @@
 }
 
 .navbar a {
-    color: #006272;
+    color: var(--ei-primary-bg-color);
     font-size: 16px !important;
-}
-
-.navbar-button {
-    background-color: #0078e7;
-    color: white !important;
-    border-radius: 6px;
-    padding: 6px 12px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.2s ease;
-}
-
-.navbar-button:hover {
-    background-color: #005bb5;
 }
 
 .navbar__logo {
@@ -139,22 +126,6 @@ body, h1, h2, h3 {
     box-shadow: none;
 }
 
-.ei-xml-snippet summary {
-    padding-left: 0;
-    font-size: 14px;
-    color: #33925d
-}
-
-.ei-xml-snippet summary::before {
-    display: none;
-}
-
-.ei-xml-snippet div {
-    border-top: none;
-    margin: 0;
-    padding: 0;
-}
-
 .theme-announcement-bar {
     min-height: 50px;
     display: flex;
@@ -162,7 +133,7 @@ body, h1, h2, h3 {
 }
 
 .hero--primary {
-    background: #006272 url(../../static/img/bg_shamrock.svg) no-repeat calc(100% + 95px) 115px;
+    background: var(--ei-primary-bg-color) url(../../static/img/bg_shamrock.svg) no-repeat calc(100% + 95px) 115px;
     min-height: 400px;
     text-align: left !important;
 }
@@ -199,7 +170,7 @@ body, h1, h2, h3 {
 
 .ring-container {
     position: relative;
-    width: 40px; /* add explicit width/height */
+    width: 40px;
     height: 40px;
 }
 
@@ -558,7 +529,7 @@ body, h1, h2, h3 {
 }
 
 .incident a:hover {
-    color: #006272;
+    color: var(--ei-primary-bg-color);
 }
 
 .incident[status='major-outage'] > .incident-indicator {
@@ -578,7 +549,7 @@ body, h1, h2, h3 {
 }
 
 .incident-status svg {
-    color: #006272;
+    color: var(--ei-primary-bg-color);
     margin: 0 5px 0 5px;
 }
 

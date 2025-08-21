@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
-import HealthCheckTable from '@site/src/components/HealthCheckTable';
+import HealthCheckTable from '@site/src/components/healthchecktable/HealthCheckTable';
 import React, {useEffect, useState} from "react"
 import axios from 'axios';
 
