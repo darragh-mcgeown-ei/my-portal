@@ -99,7 +99,7 @@ const config = {
     themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
-            // announcementBar: announcementBar,
+            announcementBar: announcementBar,
             colorMode: {
                 defaultMode: 'light',
                 disableSwitch: true,
