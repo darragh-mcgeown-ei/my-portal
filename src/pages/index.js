@@ -29,7 +29,7 @@ function HomepageHeader(props) {
                     <div className="ndc-hero__status-message" status={systemStatus}>
                         <a className="ndc-hero__status-message-text" href={"https://uptime.com/statuspage/ei-ndc-status"}
                            target={"_blank"}>
-                            {active_incidents.length <= 0 ?  "All System Operational": "Some systems are experiencing issues"}
+                            {active_incidents.length <= 0 ?  "All Systems Operational": "Some systems are experiencing issues"}
                         </a>
                     </div>
                 </div>
