@@ -76,7 +76,7 @@ export default function HealthCheckTable(props) {
                 <FontAwesomeIcon icon={faScrewdriverWrench}/>
                 Upcoming Maintenance
             </h3>
-            {upcomingMaintenance}
+            {upcomingMaintenance.length > 0 ? upcomingMaintenance : <span className={"muted"}>No upcoming maintenance activities</span>}
             <h3>
                 <FontAwesomeIcon icon={faHeartPulse}/>
                 Service Status
