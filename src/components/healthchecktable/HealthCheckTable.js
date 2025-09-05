@@ -72,7 +72,7 @@ export default function HealthCheckTable(props) {
 
     return (
         <div className={"container health-table-container"}>
-            {upcomingMaintenance && <div>
+            {upcomingMaintenance.length > 0 && <div>
                 <h3>
                     <FontAwesomeIcon icon={faScrewdriverWrench}/>
                     Upcoming Maintenance
