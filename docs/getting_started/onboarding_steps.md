@@ -2,7 +2,16 @@
 title: Onboarding Procedure
 sidebar_position: 2
 ---
-Amplify Test 5
+
+This is a test from GitHb Editor.
+
+___
+
+## Blockquotes
+
+> Blockquotes can also be nested...
+>> ...by using additional greater-than signs right next to each other...
+> > > ...or with spaces between arrows.
 
 ## What is Lorem Ipsum?
 
