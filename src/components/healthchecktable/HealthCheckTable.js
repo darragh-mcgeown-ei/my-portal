@@ -72,11 +72,14 @@ export default function HealthCheckTable(props) {
 
     return (
         <div className={"container health-table-container"}>
-            <h3>
-                <FontAwesomeIcon icon={faScrewdriverWrench}/>
-                Upcoming Maintenance
-            </h3>
-            {upcomingMaintenance.length > 0 ? upcomingMaintenance : <span className={"muted"}>No upcoming maintenance activities</span>}
+            {upcomingMaintenance && <div>
+                <h3>
+                    <FontAwesomeIcon icon={faScrewdriverWrench}/>
+                    Upcoming Maintenance
+                </h3>
+                {upcomingMaintenance}
+            </div>
+            }
             <h3>
                 <FontAwesomeIcon icon={faHeartPulse}/>
                 Service Status
